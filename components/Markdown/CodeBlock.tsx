@@ -1,5 +1,5 @@
 import { generateRandomString, programmingLanguages } from "@/utils/app/codeblock";
-import { IconDownload } from "@tabler/icons-react";
+import { IconClipboard, IconDownload } from "@tabler/icons-react";
 import { FC, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark, oneLight } from "react-syntax-highlighter/dist/cjs/styles/prism";
@@ -53,17 +53,18 @@ export const CodeBlock: FC<Props> = ({ language, value, lightMode }) => {
         <span className="text-xs text-white">{language}</span>
         <div className="flex items-center">
           <button
-            className="text-white bg-none py-0.5 px-2 rounded focus:outline-none hover:bg-blue-700 text-xs"
+            className="text-white bg-none py-1 px-3 rounded focus:outline-none hover:bg-blue-700 text-xs"
             onClick={copyToClipboard}
           >
+            <IconClipboard size={16} className='inline-block mr-2' />
             {buttonText}
           </button>
-          <button
+          {/* <button
             className="text-white bg-none py-0.5 px-2 rounded focus:outline-none hover:bg-blue-700 text-xs"
             onClick={downloadAsFile}
           >
             <IconDownload size={16} />
-          </button>
+          </button> */}
         </div>
       </div>
 

@@ -3,6 +3,7 @@ import { FC } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { CodeBlock } from "../Markdown/CodeBlock";
+import { IconBrandOpenai, IconUser } from "@tabler/icons-react";
 
 interface Props {
   message: Message;
@@ -16,7 +17,12 @@ export const ChatMessage: FC<Props> = ({ message, lightMode }) => {
       style={{ overflowWrap: "anywhere" }}
     >
       <div className="text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0 m-auto">
-        <div className="font-bold min-w-[40px]">{message.role === "assistant" ? "AI:" : "You:"}</div>
+        {
+          message.role === "assistant"
+            ? <div className='bg-primary h-fit p-1 rounded-md'><IconBrandOpenai /></div>
+            : <IconUser />
+        }
+        {/* <div className="font-bold min-w-[40px]">{message.role === "assistant" ? <IconBrandOpenai style={{'backgroundColor': 'rgb(16, 163, 127)'}} /> : <IconUser />}</div> */}
 
         <div className="prose dark:prose-invert mt-[-2px]">
           {message.role === "user" ? (
